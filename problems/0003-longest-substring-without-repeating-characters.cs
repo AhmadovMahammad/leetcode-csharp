@@ -20,5 +20,24 @@ public class Solution
         // }
 
         // return Math.Max(max, set.Count);
+
+        HashSet<char> set = new HashSet<char>();
+        int left = 0;
+        int max = 0;
+
+        for(int i = 0; i < s.Length; i++)
+        {
+            while(set.Contains(s[i]))
+            {
+                set.Remove(s[left]);
+                left += 1;
+            }
+
+            max = Math.Max(max, i - left + 1);
+            
+            set.Add(s[i]);
+        }
+
+        return max;
     }
 }
