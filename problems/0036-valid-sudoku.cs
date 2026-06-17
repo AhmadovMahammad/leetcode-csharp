@@ -6,23 +6,38 @@ public class Solution
         int bl = board.Length;
         HashSet<int> set = new HashSet<int>();
         
-        for(int i = 0; i < bs; i++)
-        {
-            for(int j = 0; j < bs; j++)
-            {
-                for(int k = 0; k < bs; k++)
-                {
-                    for(int n = 0; n < bs; n++)
-                    {
-                        char c = board[i * bs + k][j * bs + n];
-                        if(c != . && !set.Add(c))
-                        {
-                            return false;
-                        }
-                    }
-                }
+        // for(int i = 0; i < bs; i++)
+        // {
+        //     for(int j = 0; j < bs; j++)
+        //     {
+        //         for(int k = 0; k < bs; k++)
+        //         {
+        //             for(int n = 0; n < bs; n++)
+        //             {
+        //                 char c = board[i * bs + k][j * bs + n];
+        //                 if(c != . && !set.Add(c))
+        //                 {
+        //                     return false;
+        //                 }
+        //             }
+        //         }
 
-                set.Clear();
+        //         set.Clear();
+        //     }
+        // }
+
+        HashSet<string> set2 = new HashSet<string>();
+        for(int i = 0; i < bl; i++)
+        {
+            for(int j = 0; j < bl; j++)
+            {
+                char c = board[i][j];
+                string loc = $"{i / 3}{j/3}";
+                
+                if(c != . && !set2.Add($"{loc}-{c}"))
+                {
+                    return false;
+                }
             }
         }
 
